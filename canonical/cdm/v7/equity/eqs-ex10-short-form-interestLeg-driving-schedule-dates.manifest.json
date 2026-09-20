@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Equity",
+  "subProduct": "eqs-ex10-short-form-interestLeg-driving-schedule-dates",
+  "name": "Short Form Interestleg Driving Schedule Dates",
+  "slug": "eqs-ex10-short-form-interestLeg-driving-schedule-dates",
+  "family": "Swaps",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "EquitySwap_PriceReturnBasicPerformance_SingleName",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/equity/eqs-ex10-short-form-interestLeg-driving-schedule-dates.json",
+  "spec": null
+}

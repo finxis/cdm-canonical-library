@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Interest Rate",
+  "subProduct": "irs-fra",
+  "name": "Irs Fra",
+  "slug": "irs-fra",
+  "family": "Swaps",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": null,
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/irs/irs-fra.json",
+  "spec": "specs/cdm/v7/irs/product-spec.irs-fra.json"
+}

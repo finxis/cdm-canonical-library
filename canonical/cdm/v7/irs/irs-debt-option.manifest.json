@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Interest Rate",
+  "subProduct": "irs-debt-option",
+  "name": "Irs Debt Option",
+  "slug": "irs-debt-option",
+  "family": "Options & forwards",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": null,
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/irs/irs-debt-option.json",
+  "spec": "specs/cdm/v7/irs/product-spec.irs-debt-option.json"
+}

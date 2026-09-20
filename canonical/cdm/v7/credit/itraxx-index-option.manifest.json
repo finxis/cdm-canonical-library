@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Credit",
+  "subProduct": "itraxx-index-option",
+  "name": "Index Option",
+  "slug": "itraxx-index-option",
+  "family": "Swaptions",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "CreditDefaultSwaption",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/credit/itraxx-index-option.json",
+  "spec": null
+}

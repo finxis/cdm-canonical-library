@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Credit",
+  "subProduct": "cdindex-ex02-iTraxx",
+  "name": "Itraxx",
+  "slug": "cdindex-ex02-iTraxx",
+  "family": "Index",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "CreditDefaultSwap_Index",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/credit/cdindex-ex02-iTraxx.json",
+  "spec": null
+}

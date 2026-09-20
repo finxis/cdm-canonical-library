@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Equity",
+  "subProduct": "eqs-ex02-composite-basket-long-form",
+  "name": "Composite Basket Long Form",
+  "slug": "eqs-ex02-composite-basket-long-form",
+  "family": "Swaps",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "Equity:Swap:PriceReturnBasicPerformance:Basket",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/equity/eqs-ex02-composite-basket-long-form.json",
+  "spec": null
+}

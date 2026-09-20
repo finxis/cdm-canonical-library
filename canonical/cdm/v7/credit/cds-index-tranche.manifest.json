@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Credit",
+  "subProduct": "cds-index-tranche",
+  "name": "Index Tranche",
+  "slug": "cds-index-tranche",
+  "family": "Tranche",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "CreditDefaultSwap_IndexTranche",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/credit/cds-index-tranche.json",
+  "spec": null
+}

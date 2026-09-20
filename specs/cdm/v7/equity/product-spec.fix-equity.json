@@ -1,0 +1,216 @@
+{
+  "artifact": "ProductSpec",
+  "product": "FIX 5.0 ExecutionReport Equity \u2014 Product",
+  "cdmVersion": "v7",
+  "specVersion": "0.1",
+  "status": "scaffold",
+  "owner": "Tom",
+  "note": "Equity product for a FIX 5.0 (MsgType=8) execution. Rooted at TradeState (FX convention). Structure: tradeState.trade.product -> SettlementPayout -> underlier TransferableProduct -> Asset -> Security.",
+  "businessSchema": [
+    {
+      "field": "tradeDate",
+      "label": "Trade date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "price",
+      "label": "Execution price",
+      "type": "number",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "priceCurrency",
+      "label": "Price currency",
+      "type": "ccy",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "quantity",
+      "label": "Executed quantity",
+      "type": "number",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "securityIsin",
+      "label": "Security ISIN",
+      "type": "id",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "securitySymbol",
+      "label": "Security symbol / ticker",
+      "type": "string",
+      "required": false,
+      "provenance": "mapped"
+    },
+    {
+      "field": "securityExchange",
+      "label": "Listing exchange",
+      "type": "string",
+      "required": false,
+      "provenance": "mapped"
+    },
+    {
+      "field": "buyerParty",
+      "label": "Buyer party",
+      "type": "id",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "sellerParty",
+      "label": "Seller party",
+      "type": "id",
+      "required": true,
+      "provenance": "mapped"
+    }
+  ],
+  "cdmSpec": [
+    {
+      "businessField": "tradeDate",
+      "cdmPath": "tradeState.trade.tradeDate",
+      "setter": "setTradeDate",
+      "provenance": "mapped",
+      "notes": "FIX 75 TradeDate"
+    },
+    {
+      "businessField": "price",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].price[0].value",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "FIX 31 LastPx / 6 AvgPx"
+    },
+    {
+      "businessField": "priceCurrency",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].price[0].unit.currency",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "FIX 15 Currency"
+    },
+    {
+      "businessField": "(constant) price unit",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].price[0].perUnitOf.financialUnit = Share",
+      "setter": "(builder)",
+      "provenance": "constant",
+      "notes": "Equity priced per share."
+    },
+    {
+      "businessField": "quantity",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].quantity.value",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "FIX 32 LastQty / 14 CumQty"
+    },
+    {
+      "businessField": "(constant) qty unit",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].quantity.unit.financialUnit = Share",
+      "setter": "(builder)",
+      "provenance": "constant",
+      "notes": "Equity quantity in shares."
+    },
+    {
+      "businessField": "(constant) product taxonomy",
+      "cdmPath": "tradeState.trade.product.taxonomy[0].value.classification[0].value = Equity",
+      "setter": "(builder)",
+      "provenance": "constant",
+      "notes": "Fixed: Equity."
+    },
+    {
+      "businessField": "(constant) sub-product",
+      "cdmPath": "tradeState.trade.product.taxonomy[0].value.classification[1].value = Listed-Equity",
+      "setter": "(builder)",
+      "provenance": "constant",
+      "notes": "Fixed: Listed-Equity."
+    },
+    {
+      "businessField": "securityIsin",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].underlier.identifier[0].identifier",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "FIX 48 where 22=4 (ISIN); identifierType=ISIN"
+    },
+    {
+      "businessField": "securitySymbol",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].underlier.identifier[1].identifier",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "FIX 55 Symbol; identifierType=Name"
+    },
+    {
+      "businessField": "isExchangeListed",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.asset.isExchangeListed",
+      "setter": "(builder)",
+      "provenance": "derived",
+      "notes": "true when FIX 207 present"
+    },
+    {
+      "businessField": "(constant) asset types",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.asset.assetType=Security",
+      "setter": "(builder)",
+      "provenance": "constant",
+      "notes": "Fixed for listed equity."
+    },
+    {
+      "businessField": "buyer/seller roles",
+      "cdmPath": "tradeState.trade.partyRole[*].role",
+      "setter": "setPartyRole",
+      "provenance": "mapped",
+      "notes": "FIX 54 Side + 452 PartyRole -> Buyer/Seller"
+    },
+    {
+      "businessField": "counterparty",
+      "cdmPath": "tradeState.trade.counterparty[*].partyReference",
+      "setter": "setCounterparty",
+      "provenance": "mapped",
+      "notes": "FIX 448/452 Parties block"
+    },
+    {
+      "businessField": "party",
+      "cdmPath": "tradeState.trade.party[*].partyId[0].identifier",
+      "setter": "setParty",
+      "provenance": "mapped",
+      "notes": "FIX 448 PartyID"
+    },
+    {
+      "businessField": "tradeIdentifier",
+      "cdmPath": "tradeState.trade.tradeIdentifier[0].assignedIdentifier[0].identifier",
+      "setter": "setTradeIdentifier",
+      "provenance": "mapped",
+      "notes": "FIX 17 ExecID"
+    },
+    {
+      "businessField": "(synthesized) keys & refs",
+      "cdmPath": "price-1, quantity-1 (@key:scoped / @ref:scoped)",
+      "setter": "(builder)",
+      "provenance": "synthesized",
+      "notes": "tradeLot anchors from product refs; never mapped."
+    },
+    {
+      "businessField": "(synthesized) structure",
+      "cdmPath": "SettlementPayout -> TransferableProduct -> Asset -> Instrument -> Security",
+      "setter": "(builder)",
+      "provenance": "synthesized",
+      "notes": "Equity trade product template."
+    }
+  ],
+  "cdmType": "TradeState",
+  "builder": {
+    "class": "FixEquityProductBuilder",
+    "method": "buildTradeState",
+    "params": [
+      {
+        "name": "record",
+        "type": "BusinessRecord",
+        "note": "mapped equity trade+product fields"
+      }
+    ],
+    "returns": "TradeState",
+    "note": "Builds the TradeState for a listed equity: trade, tradeLot (price/quantity in shares), parties, and the product (SettlementPayout->TransferableProduct->Security). Emits scoped price/quantity refs."
+  }
+}

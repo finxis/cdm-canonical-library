@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Credit",
+  "subProduct": "cd-ex08-short-euro-corp-fixreg",
+  "name": "Short Euro Corp Fixreg",
+  "slug": "cd-ex08-short-euro-corp-fixreg",
+  "family": "Single-name",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "CreditDefaultSwap_SingleName",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/credit/cd-ex08-short-euro-corp-fixreg.json",
+  "spec": null
+}

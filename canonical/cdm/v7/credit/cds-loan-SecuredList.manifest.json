@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Credit",
+  "subProduct": "cds-loan-SecuredList",
+  "name": "Loan Securedlist",
+  "slug": "cds-loan-SecuredList",
+  "family": "Single-name",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "CreditDefaultSwap_SingleName",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/credit/cds-loan-SecuredList.json",
+  "spec": null
+}

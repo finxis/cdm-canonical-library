@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Foreign Exchange",
+  "subProduct": "fx-variance-swap",
+  "name": "Fx Variance Swap",
+  "slug": "fx-variance-swap",
+  "family": "Spot & forwards",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": null,
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/fx/fx-variance-swap.json",
+  "spec": "specs/cdm/v7/fx/product-spec.fx-variance-swap.json"
+}

@@ -1,0 +1,377 @@
+{
+  "artifact": "ProductSpec",
+  "product": "fx-american-option",
+  "cdmType": "TradeState",
+  "cdmVersion": "7.0.0-dev.131",
+  "specVersion": "1.0",
+  "status": "draft",
+  "owner": "you (build layer)",
+  "note": "FX vanilla option, American exercise. Derived from the canonical fx-american-option TradeState. OptionPayout: the economic rate lives on the STRIKE, not on a tradeLot price - priceQuantity carries only the quantity reference.",
+  "builder": {
+    "class": "FXAmericanOptionBuilder",
+    "method": "buildTradeState",
+    "params": [
+      {
+        "name": "record",
+        "type": "BusinessRecord",
+        "note": "the mapped business fields"
+      }
+    ],
+    "returns": "TradeState",
+    "note": "Builds Product (OptionPayout) + the TradeState anchors. tradeLot anchors are derived from the product's scoped references: an option references quantity + observable, but NOT a price."
+  },
+  "businessSchema": [
+    {
+      "field": "tradeDate",
+      "label": "Trade date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "valueDate",
+      "label": "Settlement / value date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped",
+      "note": "Premium/settlement date of the option."
+    },
+    {
+      "field": "buyer",
+      "label": "Buyer",
+      "type": "party",
+      "required": true,
+      "provenance": "mapped",
+      "note": "Buys the option; seller is the other party."
+    },
+    {
+      "field": "optionType",
+      "label": "Option type",
+      "type": "enum:OptionTypeEnum",
+      "required": true,
+      "provenance": "mapped",
+      "allowed": [
+        "Call",
+        "Put"
+      ]
+    },
+    {
+      "field": "callCcy",
+      "label": "Call currency",
+      "type": "ccy",
+      "required": true,
+      "provenance": "mapped",
+      "note": "Currency bought if exercised."
+    },
+    {
+      "field": "callAmount",
+      "label": "Call amount",
+      "type": "decimal",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "putCcy",
+      "label": "Put currency",
+      "type": "ccy",
+      "required": true,
+      "provenance": "mapped",
+      "note": "Currency sold if exercised."
+    },
+    {
+      "field": "putAmount",
+      "label": "Put amount",
+      "type": "decimal",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "strikeRate",
+      "label": "Strike rate",
+      "type": "decimal",
+      "required": true,
+      "provenance": "mapped",
+      "note": "Quoted as strikeUnitCcy per 1 strikePerUnitOfCcy."
+    },
+    {
+      "field": "strikeUnitCcy",
+      "label": "Strike unit currency",
+      "type": "ccy",
+      "required": true,
+      "provenance": "mapped",
+      "note": "Numerator of the strike rate."
+    },
+    {
+      "field": "strikePerUnitOfCcy",
+      "label": "Strike per-unit-of currency",
+      "type": "ccy",
+      "required": true,
+      "provenance": "mapped",
+      "note": "Denominator (base) of the strike rate; also the underlier currency."
+    },
+    {
+      "field": "exerciseStyle",
+      "label": "Exercise style",
+      "type": "enum:OptionExerciseStyleEnum",
+      "required": true,
+      "provenance": "constant",
+      "value": "American",
+      "note": "Fixed for this product spec."
+    },
+    {
+      "field": "commencementDate",
+      "label": "Commencement date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped",
+      "note": "American only - first day the option may be exercised."
+    },
+    {
+      "field": "commencementDateConvention",
+      "label": "Commencement BDC",
+      "type": "enum:BusinessDayConventionEnum",
+      "required": false,
+      "provenance": "mapped",
+      "note": "e.g. FOLLOWING."
+    },
+    {
+      "field": "expirationDate",
+      "label": "Expiration date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "expirationTime",
+      "label": "Expiration time",
+      "type": "time",
+      "required": true,
+      "provenance": "mapped",
+      "note": "e.g. 14:00:00."
+    },
+    {
+      "field": "expirationBusinessCenter",
+      "label": "Expiration business center",
+      "type": "string",
+      "required": true,
+      "provenance": "mapped",
+      "note": "Scheme string, e.g. USNY. Not an enum."
+    },
+    {
+      "field": "expirationTimeType",
+      "label": "Expiration time type",
+      "type": "enum:ExpirationTimeTypeEnum",
+      "required": false,
+      "provenance": "mapped",
+      "allowed": [
+        "SpecificTime"
+      ]
+    },
+    {
+      "field": "premiumAmount",
+      "label": "Premium amount",
+      "type": "decimal",
+      "required": false,
+      "provenance": "mapped",
+      "note": "Transfer-level (transferHistory), not part of the product."
+    },
+    {
+      "field": "premiumCcy",
+      "label": "Premium currency",
+      "type": "ccy",
+      "required": false,
+      "provenance": "mapped"
+    },
+    {
+      "field": "premiumDate",
+      "label": "Premium settlement date",
+      "type": "date",
+      "required": false,
+      "provenance": "mapped"
+    }
+  ],
+  "cdmSpec": [
+    {
+      "businessField": "tradeDate",
+      "cdmPath": "tradeState.trade.tradeDate",
+      "setter": "setTradeDate",
+      "provenance": "mapped",
+      "notes": "Trade-level."
+    },
+    {
+      "businessField": "valueDate",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.settlementTerms.settlementDate.valueDate",
+      "setter": "setSettlementTerms",
+      "provenance": "mapped",
+      "notes": ""
+    },
+    {
+      "businessField": "buyer",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.buyerSeller.buyer",
+      "setter": "setBuyerSeller",
+      "provenance": "mapped",
+      "notes": "OptionPayout.buyerSeller."
+    },
+    {
+      "businessField": "(derived) seller",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.buyerSeller.seller",
+      "setter": "setBuyerSeller",
+      "provenance": "derived",
+      "notes": "The party that is not the buyer."
+    },
+    {
+      "businessField": "(derived) payer/receiver",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.payerReceiver.payer / .receiver",
+      "setter": "setPayerReceiver",
+      "provenance": "derived",
+      "notes": "Premium direction: seller receives, buyer pays."
+    },
+    {
+      "businessField": "optionType",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.optionType",
+      "setter": "setOptionType",
+      "provenance": "mapped",
+      "notes": "OptionTypeEnum Call/Put."
+    },
+    {
+      "businessField": "strikeRate",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.strike.strikePrice.value",
+      "setter": "setStrike",
+      "provenance": "mapped",
+      "notes": "The option's economic rate - NOT a tradeLot price."
+    },
+    {
+      "businessField": "strikeUnitCcy",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.strike.strikePrice.unit.currency",
+      "setter": "setStrike",
+      "provenance": "mapped",
+      "notes": "Numerator."
+    },
+    {
+      "businessField": "strikePerUnitOfCcy",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.strike.strikePrice.perUnitOf.currency",
+      "setter": "setStrike",
+      "provenance": "mapped",
+      "notes": "Denominator = base = underlier currency."
+    },
+    {
+      "businessField": "(constant) strike priceType",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.strike.strikePrice.priceType",
+      "setter": "setStrike",
+      "provenance": "constant",
+      "notes": "ExchangeRate."
+    },
+    {
+      "businessField": "exerciseStyle",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.exerciseTerms.style",
+      "setter": "setExerciseTerms",
+      "provenance": "constant",
+      "notes": "American."
+    },
+    {
+      "businessField": "commencementDate",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.exerciseTerms.commencementDate.adjustableDate.unadjustedDate",
+      "setter": "setExerciseTerms",
+      "provenance": "mapped",
+      "notes": "American only."
+    },
+    {
+      "businessField": "commencementDateConvention",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.exerciseTerms.commencementDate.adjustableDate.dateAdjustments.businessDayConvention",
+      "setter": "setExerciseTerms",
+      "provenance": "mapped",
+      "notes": ""
+    },
+    {
+      "businessField": "expirationDate",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.exerciseTerms.expirationDate[0].adjustableDate.adjustedDate",
+      "setter": "setExerciseTerms",
+      "provenance": "mapped",
+      "notes": "expirationDate is a list."
+    },
+    {
+      "businessField": "expirationTime",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.exerciseTerms.expirationTime.hourMinuteTime",
+      "setter": "setExerciseTerms",
+      "provenance": "mapped",
+      "notes": ""
+    },
+    {
+      "businessField": "expirationBusinessCenter",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.exerciseTerms.expirationTime.businessCenter",
+      "setter": "setExerciseTerms",
+      "provenance": "mapped",
+      "notes": "Scheme string (no enum)."
+    },
+    {
+      "businessField": "expirationTimeType",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionPayout.exerciseTerms.expirationTimeType",
+      "setter": "setExerciseTerms",
+      "provenance": "mapped",
+      "notes": "SpecificTime."
+    },
+    {
+      "businessField": "callAmount / putAmount",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].quantity[0].value  /  quantity[1].value",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "Two quantities. The payout references the underlier-currency leg."
+    },
+    {
+      "businessField": "callCcy / putCcy",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].quantity[0].unit.currency  /  quantity[1].unit.currency",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": ""
+    },
+    {
+      "businessField": "(derived) underlier",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].observable.asset.cash",
+      "setter": "(builder)",
+      "provenance": "derived",
+      "notes": "Cash in strikePerUnitOfCcy (the base currency)."
+    },
+    {
+      "businessField": "(constant) types",
+      "cdmPath": "...cash.assetType = Cash ; ...identifierType = CurrencyCode",
+      "setter": "(builder)",
+      "provenance": "constant",
+      "notes": "Fixed for FX."
+    },
+    {
+      "businessField": "(synthesized) keys & refs",
+      "cdmPath": "quantity-1, observable-1  (@key:scoped / @ref:scoped)",
+      "setter": "(builder)",
+      "provenance": "synthesized",
+      "notes": "NOTE: an option references quantity + observable only - NO price ref (the rate is on the strike). Derived from the product's own references."
+    },
+    {
+      "businessField": "premiumAmount",
+      "cdmPath": "tradeState.transferHistory[0].transfer.quantity.value",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "Transfer-level, outside the product."
+    },
+    {
+      "businessField": "premiumCcy",
+      "cdmPath": "tradeState.transferHistory[0].transfer.quantity.unit.currency",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": ""
+    },
+    {
+      "businessField": "premiumDate",
+      "cdmPath": "tradeState.transferHistory[0].transfer.settlementDate.unadjustedDate",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": ""
+    },
+    {
+      "businessField": "(constant) transferType",
+      "cdmPath": "tradeState.transferHistory[0].transfer.transferType",
+      "setter": "(builder)",
+      "provenance": "constant",
+      "notes": "Premium."
+    }
+  ]
+}

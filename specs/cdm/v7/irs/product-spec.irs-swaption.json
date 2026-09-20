@@ -1,0 +1,134 @@
+{
+  "artifact": "ProductSpec",
+  "product": "irs-swaption",
+  "qualifiedName": "InterestRate_Option_Swaption",
+  "cdmType": "TradeState",
+  "cdmVersion": "7.0.0",
+  "specVersion": "0.1",
+  "status": "scaffold",
+  "owner": "you (build layer)",
+  "note": "SCAFFOLD grounded in canonical sample 'contract-formation-swaption-func-input.json'. Payout type(s): ['InterestRatePayout', 'OptionPayout']; legs: 3. cdmSpec paths are extracted from the real sample; businessSchema is a first pass to be curated (rename to facade terms, set provenance). Do NOT ship without review.",
+  "canonical": {
+    "sample": "contract-formation-swaption-func-input.json",
+    "sampleCount": 37,
+    "payoutTypes": [
+      "InterestRatePayout",
+      "OptionPayout"
+    ],
+    "legs": 3,
+    "hasWorkflowSample": true,
+    "hasBusinessEventSample": false
+  },
+  "builder": {
+    "class": "IrsSwaptionBuilder",
+    "method": "buildTradeState",
+    "params": [
+      {
+        "name": "record",
+        "type": "BusinessRecord"
+      }
+    ],
+    "returns": "TradeState"
+  },
+  "businessSchema": [
+    {
+      "field": "tradeDate",
+      "label": "Trade date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped"
+    }
+  ],
+  "cdmSpec": [
+    {
+      "businessField": "tradeDate",
+      "cdmPath": "tradeState.trade.tradeDate",
+      "provenance": "mapped",
+      "notes": "Trade-level."
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].payerReceiver.payer"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].payerReceiver.receiver"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].buyerSeller.buyer"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].buyerSeller.seller"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.taxonomy[0].source"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.taxonomy[0].calculated"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].payerReceiver.payer"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].payerReceiver.receiver"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].calculationPeriodDates.effectiveDate.adjustableDate.unadjustedDate"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].calculationPeriodDates.effectiveDate.adjustableDate.dateAdjustments.businessDayConvention"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].calculationPeriodDates.terminationDate.adjustableDate.unadjustedDate"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].calculationPeriodDates.terminationDate.adjustableDate.dateAdjustments.businessDayConvention"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].calculationPeriodDates.calculationPeriodDatesAdjustments.businessDayConvention"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].calculationPeriodDates.calculationPeriodFrequency.periodMultiplier"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].calculationPeriodDates.calculationPeriodFrequency.period"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].calculationPeriodDates.calculationPeriodFrequency.rollConvention"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].paymentDates.paymentFrequency.periodMultiplier"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].paymentDates.paymentFrequency.period"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].paymentDates.payRelativeTo"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].underlier.economicTerms.payout[0].paymentDates.paymentDatesAdjustments.businessDayConvention"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].exerciseTerms.style"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].exerciseTerms.expirationDate[0].adjustableDate.unadjustedDate"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].exerciseTerms.expirationDate[0].adjustableDate.dateAdjustments.businessDayConvention"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].exerciseTerms.earliestExerciseTime.hourMinuteTime"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].exerciseTerms.expirationTime.hourMinuteTime"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].exerciseTerms.expirationTimeType"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].exerciseTerms.exerciseProcedure.manualExercise.exerciseNotice.exerciseNoticeGiver"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].exerciseTerms.exerciseProcedure.followUpConfirmation"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Equity",
+  "subProduct": "trs-ex03-single-stock-execution-swap-with-fixing-and-dividend-payment-dates",
+  "name": "Single Stock Execution Swap With Fixing And Dividend Payment Dates",
+  "slug": "trs-ex03-single-stock-execution-swap-with-fixing-and-dividend-payment-dates",
+  "family": "Swaps",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "Equity:Swap:PriceReturnBasicPerformance:SingleName",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/equity/trs-ex03-single-stock-execution-swap-with-fixing-and-dividend-payment-dates.json",
+  "spec": null
+}

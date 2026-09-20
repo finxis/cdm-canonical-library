@@ -1,0 +1,82 @@
+{
+  "artifact": "ProductSpec",
+  "product": "fx-vanilla-option",
+  "qualifiedName": "ForeignExchange_VanillaOption",
+  "cdmType": "TradeState",
+  "cdmVersion": "7.0.0",
+  "specVersion": "0.1",
+  "status": "scaffold",
+  "owner": "you (build layer)",
+  "note": "SCAFFOLD grounded in canonical sample 'fx-ex09-euro-opt.json'. Payout type(s): ['OptionPayout']; legs: 1. cdmSpec paths are extracted from the real sample; businessSchema is a first pass to be curated (rename to facade terms, set provenance). Do NOT ship without review.",
+  "canonical": {
+    "sample": "fx-ex09-euro-opt.json",
+    "sampleCount": 19,
+    "payoutTypes": [
+      "OptionPayout"
+    ],
+    "legs": 1,
+    "hasWorkflowSample": false,
+    "hasBusinessEventSample": false
+  },
+  "builder": {
+    "class": "FxVanillaOptionBuilder",
+    "method": "buildTradeState",
+    "params": [
+      {
+        "name": "record",
+        "type": "BusinessRecord"
+      }
+    ],
+    "returns": "TradeState"
+  },
+  "businessSchema": [
+    {
+      "field": "tradeDate",
+      "label": "Trade date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped"
+    }
+  ],
+  "cdmSpec": [
+    {
+      "businessField": "tradeDate",
+      "cdmPath": "tradeState.trade.tradeDate",
+      "provenance": "mapped",
+      "notes": "Trade-level."
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].payerReceiver.payer"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].payerReceiver.receiver"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].settlementTerms.settlementDate.valueDate"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].buyerSeller.buyer"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].buyerSeller.seller"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].optionType"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].exerciseTerms.style"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].exerciseTerms.expirationTime.hourMinuteTime"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].exerciseTerms.expirationTimeType"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].strike.strikePrice.value"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].strike.strikePrice.priceType"
+    }
+  ]
+}

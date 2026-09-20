@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Equity",
+  "subProduct": "eqs-ex19-european-interdealer-fair-value-share-swap-short-form",
+  "name": "European Interdealer Fair Value Share Swap Short Form",
+  "slug": "eqs-ex19-european-interdealer-fair-value-share-swap-short-form",
+  "family": "Swaps",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "Equity:Swap:PriceReturnBasicPerformance:SingleName",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/equity/eqs-ex19-european-interdealer-fair-value-share-swap-short-form.json",
+  "spec": null
+}

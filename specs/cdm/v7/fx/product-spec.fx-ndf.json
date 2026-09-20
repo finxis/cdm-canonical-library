@@ -1,0 +1,64 @@
+{
+  "artifact": "ProductSpec",
+  "product": "fx-ndf",
+  "qualifiedName": "ForeignExchange_NDF",
+  "cdmType": "TradeState",
+  "cdmVersion": "7.0.0",
+  "specVersion": "0.1",
+  "status": "scaffold",
+  "owner": "you (build layer)",
+  "note": "SCAFFOLD grounded in canonical sample 'fx-ex07-non-deliverable-forward.json'. Payout type(s): ['SettlementPayout']; legs: 1. cdmSpec paths are extracted from the real sample; businessSchema is a first pass to be curated (rename to facade terms, set provenance). Do NOT ship without review.",
+  "canonical": {
+    "sample": "fx-ex07-non-deliverable-forward.json",
+    "sampleCount": 3,
+    "payoutTypes": [
+      "SettlementPayout"
+    ],
+    "legs": 1,
+    "hasWorkflowSample": false,
+    "hasBusinessEventSample": false
+  },
+  "builder": {
+    "class": "FxNdfBuilder",
+    "method": "buildTradeState",
+    "params": [
+      {
+        "name": "record",
+        "type": "BusinessRecord"
+      }
+    ],
+    "returns": "TradeState"
+  },
+  "businessSchema": [
+    {
+      "field": "tradeDate",
+      "label": "Trade date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped"
+    }
+  ],
+  "cdmSpec": [
+    {
+      "businessField": "tradeDate",
+      "cdmPath": "tradeState.trade.tradeDate",
+      "provenance": "mapped",
+      "notes": "Trade-level."
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].payerReceiver.payer"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].payerReceiver.receiver"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].settlementTerms.settlementType"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].settlementTerms.settlementDate.valueDate"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].settlementTerms.cashSettlementTerms[0].valuationMethod.valuationSource.quotedCurrencyPair.quoteBasis"
+    }
+  ]
+}

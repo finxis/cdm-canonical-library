@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Equity",
+  "subProduct": "eqs-ex11-on-european-single-stock-underlyer-short-form",
+  "name": "On European Single Stock Underlyer Short Form",
+  "slug": "eqs-ex11-on-european-single-stock-underlyer-short-form",
+  "family": "Swaps",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "Equity:Swap:PriceReturnBasicPerformance:SingleName",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/equity/eqs-ex11-on-european-single-stock-underlyer-short-form.json",
+  "spec": null
+}

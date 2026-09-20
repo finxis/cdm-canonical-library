@@ -1,0 +1,99 @@
+================================================================================
+FINXIS SOLUTIONS — CDM CANONICAL MODEL LIBRARY
+LICENSE AND TERMS OF USE
+================================================================================
+
+Copyright © 2026 Finxis Solutions. All rights reserved.
+
+Licensed to:        [CLIENT NAME]
+Under agreement:    [AGREEMENT / SOW REFERENCE]
+Engagement:         [ENGAGEMENT ID]
+Delivery date:      [YYYY-MM-DD]
+Library version:    [VERSION / AS-OF DATE]
+
+--------------------------------------------------------------------------------
+1. SCOPE
+--------------------------------------------------------------------------------
+This directory and all files within it (the "Library") comprise canonical
+Common Domain Model (CDM) representations, product specifications, and related
+reference materials authored, curated, generated, and validated by Finxis
+Solutions ("Finxis").
+
+The Library is provided to the licensee named above solely for use under the
+referenced agreement. It is NOT open-source and is NOT placed in the public
+domain by virtue of being derived from the FINOS Common Domain Model.
+
+--------------------------------------------------------------------------------
+2. WHAT IS AND IS NOT LICENSED
+--------------------------------------------------------------------------------
+The underlying FINOS Common Domain Model is an open-source standard governed by
+its own license; this LICENSE does not assert any rights over the CDM standard
+itself.
+
+This LICENSE covers the FINXIS CONTRIBUTION: the curation, validation,
+generation, structuring, and maintenance of the canonical representations and
+specifications contained in this Library — i.e. the work product, not the
+standard.
+
+--------------------------------------------------------------------------------
+3. CONTENT CLASSIFICATION
+--------------------------------------------------------------------------------
+Files in this Library are classified as one of:
+
+  GENERIC EXAMPLE   — a reference representation illustrating how a product is
+                      structured in CDM. Provided for reference and education.
+
+  REAL-WORLD        — a validated CDM representation of an actual, identified
+                      tradeable contract, current as of the stated as-of date.
+                      Real-world content is maintained reference data and its
+                      accuracy is time-sensitive.
+
+  PROVISIONAL       — content that relies on proposed CDM model extensions that
+                      are not yet accepted into the FINOS CDM standard, and/or
+                      has not been endorsed by the CDM working group (CRWG).
+                      Provisional content represents Finxis's valid-CDM
+                      interpretation and is subject to change.
+
+Individual files indicate their classification via their sidecar metadata where
+applicable.
+
+--------------------------------------------------------------------------------
+4. PERMITTED USE
+--------------------------------------------------------------------------------
+Subject to the referenced agreement, the licensee MAY:
+  - Use the Library internally for the purposes set out in the agreement.
+  - Load, read, and reference the Library within licensed Finxis tools
+    (including the CDM Canonical Viewer and CDM Workbench) and within the
+    licensee's own internal systems as permitted by the agreement.
+
+--------------------------------------------------------------------------------
+5. RESTRICTIONS
+--------------------------------------------------------------------------------
+Except as expressly permitted by the referenced agreement, the licensee MAY NOT:
+  - Redistribute, resell, sublicense, or publish the Library or any substantial
+    portion of it to any third party.
+  - Remove, alter, or obscure this LICENSE or any Finxis attribution.
+  - Represent the Finxis contribution as the licensee's own work.
+
+Real-world content is licensed on a time-limited, maintained basis. Absent a
+current maintenance/subscription term under the agreement, real-world content is
+provided as-of its stated date only and will become stale; continued accuracy
+requires ongoing maintenance provided by Finxis.
+
+--------------------------------------------------------------------------------
+6. NO WARRANTY / NOT ADVICE
+--------------------------------------------------------------------------------
+The Library is provided "AS IS" without warranty of any kind. Provisional and
+real-world content in particular may change. Nothing in the Library constitutes
+legal, regulatory, accounting, or trading advice. The licensee is responsible
+for validating suitability for its own use.
+
+--------------------------------------------------------------------------------
+7. TRACEABILITY
+--------------------------------------------------------------------------------
+This copy of the Library is licensed to the party named in Section 1 and may
+contain identifiers enabling that copy to be traced to that licensee.
+
+--------------------------------------------------------------------------------
+Contact: [FINXIS CONTACT]
+================================================================================

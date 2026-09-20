@@ -1,0 +1,104 @@
+{
+  "artifact": "WorkflowStepSpec",
+  "product": "FIX 5.0 ExecutionReport Equity \u2014 Workflow",
+  "cdmVersion": "v7",
+  "specVersion": "0.1",
+  "status": "scaffold",
+  "owner": "Tom",
+  "note": "Workflow envelope for a FIX 5.0 (MsgType=8) equity execution, rooted at WorkflowStep. FIX-source-specific.",
+  "businessSchema": [
+    {
+      "field": "messageId",
+      "label": "Message identifier",
+      "type": "id",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "timestamp",
+      "label": "Event timestamp",
+      "type": "datetime",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "action",
+      "label": "Workflow action",
+      "type": "enum",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "workflowState",
+      "label": "Workflow status",
+      "type": "enum",
+      "required": false,
+      "provenance": "mapped"
+    },
+    {
+      "field": "platform",
+      "label": "Execution venue",
+      "type": "string",
+      "required": false,
+      "provenance": "mapped"
+    }
+  ],
+  "cdmSpec": [
+    {
+      "businessField": "messageId",
+      "cdmPath": "workflowStep.messageInformation.messageId",
+      "setter": "setMessageInformation",
+      "provenance": "mapped",
+      "notes": "FIX 17 ExecID"
+    },
+    {
+      "businessField": "timestamp",
+      "cdmPath": "workflowStep.timestamp[0].dateTime",
+      "setter": "setTimestamp",
+      "provenance": "mapped",
+      "notes": "FIX 60 TransactTime"
+    },
+    {
+      "businessField": "action",
+      "cdmPath": "workflowStep.action",
+      "setter": "setAction",
+      "provenance": "mapped",
+      "notes": "FIX 150 ExecType"
+    },
+    {
+      "businessField": "workflowState",
+      "cdmPath": "workflowStep.workflowState.workflowStatus",
+      "setter": "setWorkflowState",
+      "provenance": "mapped",
+      "notes": "FIX 39 OrdStatus"
+    },
+    {
+      "businessField": "platform",
+      "cdmPath": "workflowStep.workflowState.partyCustomisedWorkflow[0].customisedWorkflow[0].itemValue",
+      "setter": "setCustomisedWorkflow",
+      "provenance": "mapped",
+      "notes": "FIX 207"
+    },
+    {
+      "businessField": "(constant) qualification",
+      "cdmPath": "workflowStep.timestamp[0].qualification = eventCreationDateTime",
+      "setter": "(builder)",
+      "provenance": "constant",
+      "notes": "Fixed."
+    }
+  ],
+  "cdmType": "WorkflowStep",
+  "builder": {
+    "class": "FixEquityWorkflowBuilder",
+    "method": "buildWorkflowStep",
+    "returns": "WorkflowStep",
+    "params": [
+      {
+        "name": "record",
+        "type": "BusinessRecord",
+        "note": "mapped workflow fields"
+      }
+    ],
+    "note": "Builds the WorkflowStep envelope."
+  }
+}

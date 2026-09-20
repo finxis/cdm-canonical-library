@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Equity",
+  "subProduct": "listed-equity",
+  "name": "Listed Equity",
+  "slug": "listed-equity",
+  "family": "Listed",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": null,
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/equity/listed-equity.json",
+  "spec": "specs/cdm/v7/equity/product-spec.fix-equity.json"
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Interest Rate",
+  "subProduct": "irs-forward-debt",
+  "name": "Irs Forward Debt",
+  "slug": "irs-forward-debt",
+  "family": "Swaps",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": null,
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/irs/irs-forward-debt.json",
+  "spec": "specs/cdm/v7/irs/product-spec.irs-forward-debt.json"
+}

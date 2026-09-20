@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Equity",
+  "subProduct": "eqs-ex18-pan-asia-interdealer-index-swap-short-form",
+  "name": "Pan Asia Interdealer Index Swap Short Form",
+  "slug": "eqs-ex18-pan-asia-interdealer-index-swap-short-form",
+  "family": "Swaps",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "EquitySwap_TotalReturnBasicPerformance_SingleName",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/equity/eqs-ex18-pan-asia-interdealer-index-swap-short-form.json",
+  "spec": null
+}

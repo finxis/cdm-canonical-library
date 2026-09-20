@@ -1,0 +1,211 @@
+{
+  "@model" : "cdm",
+  "@type" : "cdm.event.workflow.Workflow",
+  "@version" : "0.0.0.master-SNAPSHOT",
+  "steps" : [ {
+    "businessEvent" : {
+      "after" : [ {
+        "trade" : {
+          "product" : {
+            "taxonomy" : [ {
+              "value" : {
+                "classification" : [ {
+                  "className" : "Product",
+                  "value" : "Equity"
+                }, {
+                  "className" : "SubProduct",
+                  "value" : "Listed-Equity"
+                } ]
+              }
+            } ],
+            "economicTerms" : {
+              "payout" : [ {
+                "@type" : "cdm.product.template.SettlementPayout",
+                "priceQuantity" : {
+                  "quantitySchedule" : {
+                    "@ref:scoped" : "quantity-1"
+                  },
+                  "priceSchedule" : [ {
+                    "@ref:scoped" : "price-1"
+                  } ]
+                },
+                "settlementTerms" : {
+                  "settlementDate" : {
+                    "valueDate" : "2025-07-25"
+                  }
+                },
+                "underlier" : {
+                  "@type" : "cdm.product.template.TransferableProduct",
+                  "asset" : {
+                    "@type" : "cdm.base.staticdata.asset.common.ListedDerivative",
+                    "isExchangeListed" : true,
+                    "assetType" : "Security"
+                  },
+                  "economicTerms" : {
+                    "effectiveDate" : {
+                      "adjustableDate" : {
+                        "adjustedDate" : {
+                          "@data" : "2026-07-25"
+                        }
+                      }
+                    },
+                    "terminationDate" : {
+                      "adjustableDate" : {
+                        "adjustedDate" : {
+                          "@data" : "2026-10-25"
+                        }
+                      }
+                    },
+                    "payout" : [ {
+                      "@type" : "cdm.product.template.AssetPayout",
+                      "payerReceiver" : {
+                        "payer" : "Party2",
+                        "receiver" : "Party1"
+                      },
+                      "settlementTerms" : {
+                        "settlementDate" : {
+                          "valueDate" : "2025-07-25"
+                        }
+                      },
+                      "underlier" : {
+                        "@type" : "cdm.base.staticdata.asset.common.Security",
+                        "identifier" : [ {
+                          "identifier" : {
+                            "@data" : "US02079K1079"
+                          },
+                          "identifierType" : "ISIN"
+                        }, {
+                          "identifier" : {
+                            "@data" : "GOOG"
+                          },
+                          "identifierType" : "Name"
+                        } ],
+                        "assetType" : "Security"
+                      }
+                    } ]
+                  }
+                }
+              } ]
+            }
+          },
+          "tradeLot" : [ {
+            "priceQuantity" : [ {
+              "price" : [ {
+                "@key:scoped" : "price-1",
+                "value" : 331.84,
+                "unit" : {
+                  "currency" : {
+                    "@data" : "USD"
+                  }
+                },
+                "perUnitOf" : {
+                  "financialUnit" : "Share"
+                }
+              } ],
+              "quantity" : {
+                "@key:scoped" : "quantity-1",
+                "value" : 5000.0,
+                "unit" : {
+                  "financialUnit" : "Share"
+                }
+              }
+            } ]
+          } ],
+          "counterparty" : [ {
+            "role" : "Party1",
+            "partyReference" : {
+              "@ref:external" : "DEALER"
+            }
+          }, {
+            "role" : "Party2",
+            "partyReference" : {
+              "@ref:external" : "COUNTERPARTY"
+            }
+          } ],
+          "tradeIdentifier" : [ {
+            "assignedIdentifier" : [ {
+              "identifier" : {
+                "@data" : "Equity_1000"
+              }
+            } ]
+          } ],
+          "tradeDate" : {
+            "@data" : "2026-08-19"
+          },
+          "party" : [ {
+            "partyId" : [ {
+              "identifier" : {
+                "@data" : "DEALER"
+              }
+            } ]
+          }, {
+            "partyId" : [ {
+              "identifier" : {
+                "@data" : "COUNTERPARTY"
+              }
+            } ]
+          }, {
+            "partyId" : [ {
+              "identifier" : {
+                "@data" : "UUID123"
+              }
+            } ]
+          } ],
+          "partyRole" : [ {
+            "partyReference" : {
+              "partyId" : [ {
+                "identifier" : {
+                  "@data" : "DEALER"
+                }
+              } ]
+            },
+            "role" : "Buyer"
+          }, {
+            "partyReference" : {
+              "partyId" : [ {
+                "identifier" : {
+                  "@data" : "COUNTERPARTY"
+                }
+              } ]
+            },
+            "role" : "Seller"
+          }, {
+            "partyReference" : {
+              "partyId" : [ {
+                "identifier" : {
+                  "@data" : "UUID123"
+                }
+              } ]
+            },
+            "role" : "BookingParty"
+          } ]
+        },
+        "state" : {
+          "positionState" : "Executed"
+        }
+      } ]
+    },
+    "messageInformation" : {
+      "messageId" : {
+        "@data" : "Equity_1000"
+      },
+      "sentBy" : {
+        "@data" : "CDM"
+      }
+    },
+    "timestamp" : [ {
+      "dateTime" : "2025-07-24T09:53:05Z",
+      "qualification" : "eventCreationDateTime"
+    } ],
+    "action" : "New",
+    "workflowState" : {
+      "workflowStatus" : "Accepted",
+      "partyCustomisedWorkflow" : [ {
+        "customisedWorkflow" : [ {
+          "itemName" : "Platform",
+          "itemValue" : "NASDAQ"
+        } ]
+      } ]
+    }
+  } ]
+}

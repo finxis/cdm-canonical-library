@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Credit",
+  "subProduct": "cd-ex04-short-aussie-corp-fixreg",
+  "name": "Short Aussie Corp Fixreg",
+  "slug": "cd-ex04-short-aussie-corp-fixreg",
+  "family": "Single-name",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "CreditDefaultSwap_SingleName",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/credit/cd-ex04-short-aussie-corp-fixreg.json",
+  "spec": null
+}

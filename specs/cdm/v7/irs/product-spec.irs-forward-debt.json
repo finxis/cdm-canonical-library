@@ -1,0 +1,64 @@
+{
+  "artifact": "ProductSpec",
+  "product": "irs-forward-debt",
+  "qualifiedName": "InterestRate_Forward_Debt",
+  "cdmType": "TradeState",
+  "cdmVersion": "7.0.0",
+  "specVersion": "0.1",
+  "status": "scaffold",
+  "owner": "you (build layer)",
+  "note": "SCAFFOLD grounded in canonical sample 'bond-execution-func-output.json'. Payout type(s): ['SettlementPayout']; legs: 2. cdmSpec paths are extracted from the real sample; businessSchema is a first pass to be curated (rename to facade terms, set provenance). Do NOT ship without review.",
+  "canonical": {
+    "sample": "bond-execution-func-output.json",
+    "sampleCount": 3,
+    "payoutTypes": [
+      "SettlementPayout"
+    ],
+    "legs": 2,
+    "hasWorkflowSample": false,
+    "hasBusinessEventSample": false
+  },
+  "builder": {
+    "class": "IrsForwardDebtBuilder",
+    "method": "buildTradeState",
+    "params": [
+      {
+        "name": "record",
+        "type": "BusinessRecord"
+      }
+    ],
+    "returns": "TradeState"
+  },
+  "businessSchema": [
+    {
+      "field": "tradeDate",
+      "label": "Trade date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped"
+    }
+  ],
+  "cdmSpec": [
+    {
+      "businessField": "tradeDate",
+      "cdmPath": "tradeState.trade.tradeDate",
+      "provenance": "mapped",
+      "notes": "Trade-level."
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].payerReceiver.payer"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].payerReceiver.receiver"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].settlementTerms.transferSettlementType"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].settlementTerms.securitySettlementCentre"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].settlementTerms.cashSettlementCentre"
+    }
+  ]
+}

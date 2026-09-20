@@ -1,0 +1,139 @@
+{
+  "artifact": "TradeSpec",
+  "product": "FIX 5.0 ExecutionReport Equity \u2014 Trade",
+  "cdmVersion": "v7",
+  "specVersion": "0.1",
+  "status": "scaffold",
+  "owner": "Tom",
+  "note": "Trade layer for a FIX 5.0 equity execution, rooted at TradeState (tradeState.trade.*). FIX-source-specific.",
+  "businessSchema": [
+    {
+      "field": "tradeIdentifier",
+      "label": "Trade identifier",
+      "type": "id",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "tradeDate",
+      "label": "Trade date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "price",
+      "label": "Execution price",
+      "type": "number",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "priceCurrency",
+      "label": "Price currency",
+      "type": "ccy",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "quantity",
+      "label": "Executed quantity",
+      "type": "number",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "buyerParty",
+      "label": "Buyer party",
+      "type": "id",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "sellerParty",
+      "label": "Seller party",
+      "type": "id",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "bookingParty",
+      "label": "Booking party",
+      "type": "id",
+      "required": false,
+      "provenance": "mapped"
+    }
+  ],
+  "cdmSpec": [
+    {
+      "businessField": "tradeIdentifier",
+      "cdmPath": "tradeState.trade.tradeIdentifier[0].assignedIdentifier[0].identifier",
+      "setter": "setTradeIdentifier",
+      "provenance": "mapped",
+      "notes": "FIX 17"
+    },
+    {
+      "businessField": "tradeDate",
+      "cdmPath": "tradeState.trade.tradeDate",
+      "setter": "setTradeDate",
+      "provenance": "mapped",
+      "notes": "FIX 75"
+    },
+    {
+      "businessField": "price",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].price[0].value",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "FIX 31/6"
+    },
+    {
+      "businessField": "priceCurrency",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].price[0].unit.currency",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "FIX 15"
+    },
+    {
+      "businessField": "quantity",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].quantity.value",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "FIX 32/14"
+    },
+    {
+      "businessField": "buyer/seller",
+      "cdmPath": "tradeState.trade.partyRole[*].role",
+      "setter": "setPartyRole",
+      "provenance": "mapped",
+      "notes": "FIX 54 + Parties"
+    },
+    {
+      "businessField": "counterparty",
+      "cdmPath": "tradeState.trade.counterparty[*].partyReference",
+      "setter": "setCounterparty",
+      "provenance": "mapped",
+      "notes": "FIX 448/452"
+    },
+    {
+      "businessField": "party",
+      "cdmPath": "tradeState.trade.party[*].partyId[0].identifier",
+      "setter": "setParty",
+      "provenance": "mapped",
+      "notes": "FIX 448"
+    }
+  ],
+  "cdmType": "TradeState",
+  "builder": {
+    "class": "FixEquityTradeBuilder",
+    "method": "buildTradeState",
+    "returns": "TradeState",
+    "params": [
+      {
+        "name": "record",
+        "type": "BusinessRecord",
+        "note": "mapped trade fields"
+      }
+    ],
+    "note": "Builds TradeState: trade, tradeLot anchors, parties, partyRoles."
+  }
+}

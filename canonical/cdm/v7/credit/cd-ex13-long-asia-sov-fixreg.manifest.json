@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Credit",
+  "subProduct": "cd-ex13-long-asia-sov-fixreg",
+  "name": "Long Asia Sov Fixreg",
+  "slug": "cd-ex13-long-asia-sov-fixreg",
+  "family": "Single-name",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": "CreditDefaultSwap_SingleName",
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/credit/cd-ex13-long-asia-sov-fixreg.json",
+  "spec": null
+}

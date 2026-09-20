@@ -1,0 +1,153 @@
+{
+  "artifact": "ProductSpec",
+  "product": "fx-spot-forward",
+  "cdmVersion": "7.0.0-dev.131",
+  "specVersion": "1.0",
+  "status": "approved",
+  "owner": "you (build layer)",
+  "note": "Derived from the canonical fx-forward TradeState. Identical for every client trading this product.",
+  "businessSchema": [
+    {
+      "field": "tradeDate",
+      "label": "Trade date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "valueDate",
+      "label": "Value (settlement) date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "baseCcy",
+      "label": "Base currency",
+      "type": "ccy",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "quoteCcy",
+      "label": "Quote currency",
+      "type": "ccy",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "baseAmount",
+      "label": "Base amount (notional)",
+      "type": "decimal",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "rate",
+      "label": "Exchange rate",
+      "type": "decimal",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "basePayer",
+      "label": "Base payer",
+      "type": "party",
+      "required": true,
+      "provenance": "mapped"
+    }
+  ],
+  "cdmSpec": [
+    {
+      "businessField": "tradeDate",
+      "cdmPath": "tradeState.trade.tradeDate",
+      "setter": "setTradeDate",
+      "provenance": "mapped",
+      "notes": "Trade-level."
+    },
+    {
+      "businessField": "valueDate",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].settlementPayout.settlementTerms.settlementDate.valueDate",
+      "setter": "setSettlementTerms",
+      "provenance": "mapped",
+      "notes": "Settlement date."
+    },
+    {
+      "businessField": "baseCcy",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].quantity[0].unit.currency",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "Also price.perUnitOf.currency and the observable Cash."
+    },
+    {
+      "businessField": "quoteCcy",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].quantity[1].unit.currency",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "Also price.unit.currency."
+    },
+    {
+      "businessField": "baseAmount",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].quantity[0].value",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "Base notional."
+    },
+    {
+      "businessField": "rate",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].price[0].value",
+      "setter": "(builder)",
+      "provenance": "mapped",
+      "notes": "Exchange rate."
+    },
+    {
+      "businessField": "basePayer",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].settlementPayout.payerReceiver.payer",
+      "setter": "setPayerReceiver",
+      "provenance": "mapped",
+      "notes": "Receiver is the other party."
+    },
+    {
+      "businessField": "(derived) receiver",
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].settlementPayout.payerReceiver.receiver",
+      "setter": "setPayerReceiver",
+      "provenance": "derived",
+      "notes": "The party that is not the base payer."
+    },
+    {
+      "businessField": "(derived) contra amount",
+      "cdmPath": "tradeState.trade.tradeLot[0].priceQuantity[0].quantity[1].value",
+      "setter": "(builder)",
+      "provenance": "derived",
+      "notes": "baseAmount x rate, in quote currency."
+    },
+    {
+      "businessField": "(constant) types",
+      "cdmPath": "...price[0].priceType = ExchangeRate ; ...cash.assetType = Cash",
+      "setter": "(builder)",
+      "provenance": "constant",
+      "notes": "Fixed for FX."
+    },
+    {
+      "businessField": "(synthesized) keys & refs",
+      "cdmPath": "quantity-1, quantity-2, price-1, observable-1  (@key:scoped / @ref:scoped)",
+      "setter": "(builder)",
+      "provenance": "synthesized",
+      "notes": "Derived from the product's own references; never mapped."
+    }
+  ],
+  "cdmType": "TradeState",
+  "builder": {
+    "class": "FXSpotForwardBuilder",
+    "method": "buildTradeState",
+    "params": [
+      {
+        "name": "record",
+        "type": "BusinessRecord",
+        "note": "the mapped business fields"
+      }
+    ],
+    "returns": "TradeState",
+    "note": "Builds Product + the TradeState anchors (tradeLot). tradeLot anchors are derived from the product's scoped references."
+  }
+}

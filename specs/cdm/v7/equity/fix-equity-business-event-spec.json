@@ -1,0 +1,60 @@
+{
+  "artifact": "BusinessEventSpec",
+  "product": "FIX 5.0 ExecutionReport Equity \u2014 BusinessEvent",
+  "cdmVersion": "v7",
+  "specVersion": "0.1",
+  "status": "scaffold",
+  "owner": "Tom",
+  "note": "Business event for a FIX 5.0 equity execution, rooted at BusinessEvent. FIX-source-specific.",
+  "businessSchema": [
+    {
+      "field": "eventType",
+      "label": "Business event type",
+      "type": "enum",
+      "required": true,
+      "provenance": "mapped"
+    },
+    {
+      "field": "positionState",
+      "label": "Position state",
+      "type": "enum",
+      "required": false,
+      "provenance": "mapped"
+    }
+  ],
+  "cdmSpec": [
+    {
+      "businessField": "businessEvent",
+      "cdmPath": "businessEvent",
+      "setter": "createBusinessEvent",
+      "provenance": "mapped",
+      "notes": "execution event from FIX 150/39"
+    },
+    {
+      "businessField": "positionState",
+      "cdmPath": "businessEvent.after[0].state.positionState",
+      "setter": "setPositionState",
+      "provenance": "mapped",
+      "notes": "FIX 39=2 -> Executed"
+    }
+  ],
+  "cdmType": "BusinessEvent",
+  "builder": {
+    "class": "FixEquityBusinessEventBuilder",
+    "method": "buildBusinessEvent",
+    "returns": "BusinessEvent",
+    "params": [
+      {
+        "name": "record",
+        "type": "BusinessRecord",
+        "note": "mapped event fields"
+      },
+      {
+        "name": "after",
+        "type": "TradeState",
+        "note": "resulting trade state"
+      }
+    ],
+    "note": "Wraps the after-state TradeState in a BusinessEvent."
+  }
+}

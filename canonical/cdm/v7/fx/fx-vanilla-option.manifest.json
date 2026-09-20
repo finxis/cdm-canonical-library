@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Foreign Exchange",
+  "subProduct": "fx-vanilla-option",
+  "name": "Fx Vanilla Option",
+  "slug": "fx-vanilla-option",
+  "family": "Options",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": null,
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/fx/fx-vanilla-option.json",
+  "spec": "specs/cdm/v7/fx/product-spec.fx-vanilla-option.json"
+}

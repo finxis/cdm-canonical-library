@@ -1,0 +1,94 @@
+{
+  "artifact": "ProductSpec",
+  "product": "fx-volatility-swap",
+  "qualifiedName": "ForeignExchange_ParameterReturnVolatility",
+  "cdmType": "TradeState",
+  "cdmVersion": "7.0.0",
+  "specVersion": "0.1",
+  "status": "scaffold",
+  "owner": "you (build layer)",
+  "note": "SCAFFOLD grounded in canonical sample 'fx-ex31-volatility-swap.json'. Payout type(s): ['PerformancePayout']; legs: 1. cdmSpec paths are extracted from the real sample; businessSchema is a first pass to be curated (rename to facade terms, set provenance). Do NOT ship without review.",
+  "canonical": {
+    "sample": "fx-ex31-volatility-swap.json",
+    "sampleCount": 2,
+    "payoutTypes": [
+      "PerformancePayout"
+    ],
+    "legs": 1,
+    "hasWorkflowSample": false,
+    "hasBusinessEventSample": false
+  },
+  "builder": {
+    "class": "FxVolatilitySwapBuilder",
+    "method": "buildTradeState",
+    "params": [
+      {
+        "name": "record",
+        "type": "BusinessRecord"
+      }
+    ],
+    "returns": "TradeState"
+  },
+  "businessSchema": [
+    {
+      "field": "tradeDate",
+      "label": "Trade date",
+      "type": "date",
+      "required": true,
+      "provenance": "mapped"
+    }
+  ],
+  "cdmSpec": [
+    {
+      "businessField": "tradeDate",
+      "cdmPath": "tradeState.trade.tradeDate",
+      "provenance": "mapped",
+      "notes": "Trade-level."
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].payerReceiver.payer"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].payerReceiver.receiver"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].settlementTerms.settlementType"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].observationTerms.observationTime.hourMinuteTime"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].observationTerms.observationDates.periodicSchedule.startDate.adjustableDate.unadjustedDate"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].observationTerms.observationDates.periodicSchedule.endDate.adjustableDate.unadjustedDate"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].observationTerms.observationDates.periodicSchedule.dayType"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].observationTerms.numberOfObservationDates"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].valuationDates.finalValuationDate.valuationDates.relativeDates.periodMultiplier"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].valuationDates.finalValuationDate.valuationDates.relativeDates.period"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].valuationDates.finalValuationDate.valuationDates.relativeDates.dayType"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].returnTerms.volatilityReturnTerms.annualizationFactor"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].returnTerms.volatilityReturnTerms.meanAdjustment"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].returnTerms.volatilityReturnTerms.volatilityStrikePrice.value"
+    },
+    {
+      "cdmPath": "tradeState.trade.product.economicTerms.payout[0].returnTerms.volatilityReturnTerms.volatilityStrikePrice.priceType"
+    }
+  ]
+}

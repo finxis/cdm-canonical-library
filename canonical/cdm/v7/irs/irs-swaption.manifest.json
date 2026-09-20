@@ -1,0 +1,19 @@
+{
+  "schema": "cdm-product/2",
+  "source": "CDM",
+  "version": "v7",
+  "productClass": "Interest Rate",
+  "subProduct": "irs-swaption",
+  "name": "Irs Swaption",
+  "slug": "irs-swaption",
+  "family": "Options & forwards",
+  "description": "",
+  "provenance": "as-published",
+  "derivedFrom": null,
+  "provenanceNote": null,
+  "taxonomy": null,
+  "lifecycleEvents": [],
+  "tags": [],
+  "canonical": "canonical/cdm/v7/irs/irs-swaption.json",
+  "spec": "specs/cdm/v7/irs/product-spec.irs-swaption.json"
+}
