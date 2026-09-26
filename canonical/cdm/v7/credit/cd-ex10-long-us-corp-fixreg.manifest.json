@@ -4,7 +4,7 @@
   "version": "v7",
   "productClass": "Credit",
   "subProduct": "cd-ex10-long-us-corp-fixreg",
-  "name": "Long Us Corp Fixreg",
+  "name": "CDS Long US Corp Fixed Regular Payment Schedule",
   "slug": "cd-ex10-long-us-corp-fixreg",
   "family": "Single-name",
   "description": "",

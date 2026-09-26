@@ -6,7 +6,7 @@
   "cdmVersion": "7.0.0",
   "specVersion": "0.1",
   "status": "scaffold",
-  "owner": "you (build layer)",
+  "owner": "finxis",
   "note": "SCAFFOLD grounded in canonical sample 'fx-ex07-non-deliverable-forward.json'. Payout type(s): ['SettlementPayout']; legs: 1. cdmSpec paths are extracted from the real sample; businessSchema is a first pass to be curated (rename to facade terms, set provenance). Do NOT ship without review.",
   "canonical": {
     "sample": "fx-ex07-non-deliverable-forward.json",

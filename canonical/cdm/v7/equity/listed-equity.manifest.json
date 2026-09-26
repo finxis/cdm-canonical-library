@@ -7,7 +7,7 @@
   "name": "Listed Equity",
   "slug": "listed-equity",
   "family": "Listed",
-  "description": "",
+  "description": "An equity listed on a exchange.",
   "provenance": "as-published",
   "derivedFrom": null,
   "provenanceNote": null,
